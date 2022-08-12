@@ -1,13 +1,108 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@800&family=Hurricane&family=Kanit:ital,wght@1,600&family=Poppins:ital,wght@0,400;0,800;1,200;1,300;1,600&family=Rubik:wght@600&family=Varela+Round&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+    scroll-behavior: smooth;
 }
+
+input,
+input::placeholder {
+    font: 12px sans-serif;
+}
+
+.varela-round{
+    font-family: "Varela Round";
+}
+
+.company-name{
+    font-family: "Poppins", sans-serif;
+}
+
+/* Add Product Page */
+
+.add-product-selection {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-product-image {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media all and (max-width: 700px) {
+    /* CSS rules here for screens lower than 600px */
+
+        .company-logo{            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            right: -30vw;
+            width: fit-content;
+        }
+
+        .company-image {
+            background-color: brown;
+        }
+
+        .menu-items{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-button{
+            display: none;
+        }
+
+        .cart-button{
+            position: absolute;
+            top: 1rem;
+            left: 0;
+        }
+
+        .cart-button:hover{
+            background-color: transparent;
+        }
+
+        .profile-button{
+            position: absolute;
+            top: 1vh;
+            right: 0;
+        }
+
+
+        /* Add product Page  */
+        .add-product-selection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+}
+
+
+
+.feature-product{
+  margin-top: -5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  text-align: center;
+  cursor: pointer;
+}
+
