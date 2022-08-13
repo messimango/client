@@ -1,6 +1,7 @@
 export const actionType = {
     SET_USER: "SET_USER",
-}
+    SET_PRODUCE_SELECTION : 'SET_PRODUCE_SELECTION',
+};
 
 
 const reducer = (state, action) => {
@@ -12,6 +13,13 @@ const reducer = (state, action) => {
                 ...state,
                 user : action.user,
             };
+
+            
+            case actionType.SET_PRODUCE_SELECTION:
+                return {
+                    ...state,
+                    produceSelection : action.produceSelection,
+                };
 
             default:
                 return state;

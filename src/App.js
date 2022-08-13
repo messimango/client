@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Navbar, Login, Homepage, Admin, Winter, AddProduct } from "./components";
-
+import { getAllProducts } from './utilities/firebaseFunctions';
+import { useStateValue } from "./context/StateProvider";
+import { actionType } from "./context/reducer";
 
 
 function App() {
+
+  const [{}, dispatch] = useStateValue();
+
+  const fetchData = async () => {
+    await getAllProducts().then(data => {
+      dispatch({
+        type: actionType.SET_PRODUCE_SELECTION,
+        produceSelection : data,
+      });
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
+
   return (
     <AnimatePresence exitBeforeEnter>
       <div className="App w-screen h-auto flex flex-col">
