@@ -18,6 +18,7 @@ const AddProduct = () => {
   const [notice, setNotice] = useState('Product Name Not Entered');
   const [productImage, setProductImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [{produceSelection}, dispatch] = useStateValue();
     
   const uploadProductImage = (e) => {
     setIsLoading(true);
@@ -125,6 +126,16 @@ const AddProduct = () => {
     setDescription("");
     setCategories("Select Category");
   }
+
+  const fetchData = async () => {
+    await getAllProducts().then(data => {
+      dispatch({
+        type: actionType.SET_PRODUCE_SELECTION,
+        produceSelection : data,
+      });
+    });
+  };
+
     
   return (
     <div className='p-2'>

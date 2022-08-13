@@ -10,7 +10,7 @@ import { actionType } from "./context/reducer";
 
 function App() {
 
-  const [{}, dispatch] = useStateValue();
+  const [{produceSelection}, dispatch] = useStateValue();
 
   const fetchData = async () => {
     await getAllProducts().then(data => {
