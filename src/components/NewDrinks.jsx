@@ -3,13 +3,12 @@ import { useStateValue } from '../context/StateProvider';
 
 const NewDrinks = () => {
     const [{produceSelection}, dispatch] = useStateValue();
-    const drinkSelection = produceSelection?.filter((n) => n.category === 'drinks');
-    console.log(drinkSelection)
+    const drinkSelection = produceSelection?.filter((n) => n.name === 'Chhaang/Tongba');
 
     return (
     <div className='mt-10'>
         <div className='feature-box text-center'>
-        <h1 className='font-bold text-slate-50 '>Try our Special Drinks!</h1> 
+        <h1 className='font-bold text-slate-50 '>Try our Special New Drink!</h1> 
         <div className='underline w-40'></div>
         </div>
 

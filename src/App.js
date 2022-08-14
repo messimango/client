@@ -31,7 +31,7 @@ function App() {
       <div className="App w-screen h-auto flex flex-col">
         <Navbar />
 
-        <div className="page-content mt-24 p-8 2-full">
+        <div className="page-content mt-24 2-full">
           <Routes>
             <Route path="/*" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
