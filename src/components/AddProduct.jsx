@@ -4,7 +4,9 @@ import { category } from '../utilities/data';
 import Loading from './Loading';
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage' ;
 import { storage } from '../firebase.config';
-import { saveProduct } from '../utilities/firebaseFunctions';
+import { getAllProducts, saveProduct } from '../utilities/firebaseFunctions';
+import { actionType } from '../context/reducer';
+import { useStateValue } from '../context/StateProvider';
 
 const AddProduct = () => {
 
@@ -116,6 +118,8 @@ const AddProduct = () => {
         setIsLoading(false);
       }, 5000);
     }
+
+    fetchData();
   };
 
   const clearData = () => {

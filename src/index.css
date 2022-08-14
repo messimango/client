@@ -2,7 +2,8 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
+    font-family: "Poppins";
 }
 
 html,
@@ -10,9 +11,25 @@ body {
     scroll-behavior: smooth;
 }
 
+#root{    
+    background-color: #1305A8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23310486' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%234f0365' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%236e0243' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%238c0122' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23A00' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
 input,
 input::placeholder {
     font: 12px sans-serif;
+}
+
+.underline {
+    width: 4rem;
+    height: .4rem;
+    background: #DC143C;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .varela-round{
@@ -22,6 +39,7 @@ input::placeholder {
 .company-name{
     font-family: "Poppins", sans-serif;
 }
+
 
 /* Add Product Page */
 
@@ -93,16 +111,14 @@ input::placeholder {
 
 }
 
-
+/* Main page */
 
 .feature-product{
-  margin-top: -5rem;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
-  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap; 
   text-align: center;
-  cursor: pointer;
 }
+
 
