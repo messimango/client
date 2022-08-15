@@ -4,9 +4,7 @@ import { useStateValue } from '../context/StateProvider';
 function FeaturedProducts() {
 
   const [{produceSelection}, dispatch] = useStateValue();
-  console.log(produceSelection)  
   const momoSelection = produceSelection?.filter((n) => n.category === 'momo');
-  console.log(momoSelection)
 
   const slideLeft = () => {
     var slider = document.getElementById('slider')

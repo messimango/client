@@ -56,12 +56,20 @@ const Navbar = () => {
         {/* Navbar Links */}
 
         <ul className='menu-options flex flex-row ml-auto'>
-          <motion.li  whileTap={{scale:0.7}}  onClick={() => setOpenProfile(false)} className='contact-button cursor-pointer flex flex-col hover:bg-cyan-400 p-2 rounded-md w-20 h-8'>
+        <Link to={'menu'}>
+          <motion.li  whileTap={{scale:0.7}}  onClick={() => setOpenProfile(false)} 
+            className='contact-button cursor-pointer flex flex-col hover:bg-cyan-400 mx-2 text-center justify-center text-xl text-slate-50 font-bold rounded-md w-20 h-8'>
+            Menu
+          </motion.li>
+        </Link>
+        
+
+          <motion.li  whileTap={{scale:0.7}}  onClick={() => setOpenProfile(false)} className='contact-button cursor-pointer flex flex-col hover:bg-cyan-400 p-2 rounded-full w-10 h-8'>
             <i className="fa-solid fa-phone text-center text-slate-50"></i>
           </motion.li>
 
           <motion.li  whileTap={{scale:0.7}}  onClick={() => setOpenProfile(false)} className='cart-button cursor-pointer flex flex-col hover:bg-cyan-400 p-2 rounded-md w-20 h-8 relative'>
-            <i className="fa-solid fa-cart-shopping text-center text-slate-50"><p className='bg-rose-500 rounded-full w-4 h-4 text-center text-xs text-slate-50 absolute top-0 right-5'>4</p></i>
+            <i className="fa-solid fa-basket-shopping text-center text-slate-50"><p className='bg-rose-500 rounded-full w-4 h-4 text-center text-xs text-slate-50 absolute top-0 right-5'>4</p></i>
           </motion.li>
 
 
