@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { Navbar, Login, Homepage, Admin, Winter, AddProduct, Menu } from "./components";
+import { Navbar, Login, Homepage, Admin, Winter, AddProduct, Menu, Cart } from "./components";
 import { getAllProducts } from './utilities/firebaseFunctions';
 import { useStateValue } from "./context/StateProvider";
 import { actionType } from "./context/reducer";
@@ -10,7 +10,7 @@ import { actionType } from "./context/reducer";
 
 function App() {
 
-  const [{produceSelection}, dispatch] = useStateValue();
+  const [{produceSelection, checkout}, dispatch] = useStateValue();
 
   const fetchData = async () => {
     await getAllProducts().then(data => {
@@ -24,6 +24,9 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+  }, [checkout]);
   
 
   return (
@@ -41,6 +44,11 @@ function App() {
             <Route path="/menu" element={<Menu />} />
           </Routes>
         </div>
+        
+        {checkout && (
+          <Cart />
+        )}
+        
       </div>
     </AnimatePresence>
   );
