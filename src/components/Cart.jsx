@@ -1,13 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 
 const Cart = () => {
+    
+    const [{checkout}, dispatch] = useStateValue()
+
+    const closeCheckout = () => {
+        dispatch({
+            type: actionType.SET_CHECKOUT,
+            checkout: !checkout,
+          })
+    } 
+
   return (
-    <aside className='cart-box flex fixed p-3 h-full top-0 right-0 flex-col bg-white drop-shadow-md show-cart'>
+    <motion.aside initial={{ opacity: 0, x: 200 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 200 }}
+        className='cart-box flex fixed p-3 h-full top-0 right-0 flex-col bg-white drop-shadow-md show-cart'>
 
         {/* cart header */}
         <div className='cart-header flex flex-column'>
-            <motion.div whileTap={ {scale:0.7} } className='text-left'><i className="cart-close fa-solid fa-xmark fs-2"></i></motion.div>
+            <motion.div onClick={closeCheckout} className='text-left'>
+                <i className="cart-close fa-solid fa-xmark fs-2"></i>
+            </motion.div>
 
             
             <h1  className='text-center'>Your Cart</h1>
@@ -81,12 +96,12 @@ const Cart = () => {
              hover:shadow-lg hover:bg-slate-50 hover:text-red-600 font-bold border-3 border-red-600'
              > Checkout </motion.button>
 
-            <motion.button type='button' whileTap={{ scale:0.7 }}
+            <motion.button onClick={closeCheckout} type='button' whileTap={{ scale:0.7 }}
              className='continue-button text-lg my-2 bg-white text-emerald-800 rounded-full w-full p-2 font-bold'
              > {'< Continue Shopping'}</motion.button>
 
         </footer>
-    </aside>
+    </motion.aside>
   )
 }
 

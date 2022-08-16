@@ -64,8 +64,8 @@ const Menu = () => {
                 <p className="menu-item-description overflow-auto">
                     {item.description}
                 </p>
-                <button class="cursor-pointer p-1 border-red-600 border-2 rounded-2xl">
-                  Add To<i class="mx-1 fa fa-shopping-basket text-lg text-red-600"></i>
+                <button className="cursor-pointer p-1 border-red-600 border-2 rounded-2xl">
+                  Add To<i className="mx-1 fa fa-shopping-basket text-lg text-red-600"></i>
                 </button>                 
             </div>
           </article>

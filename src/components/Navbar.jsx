@@ -43,7 +43,10 @@ const Navbar = () => {
   };
 
   const toggleCheckout = () => {
-    console.log("hello")
+    dispatch({
+      type: actionType.SET_CHECKOUT,
+      checkout: !checkout,
+    })
   }
 
   return (
