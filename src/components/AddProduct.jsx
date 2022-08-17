@@ -7,6 +7,7 @@ import { storage } from '../firebase.config';
 import { getAllProducts, saveProduct } from '../utilities/firebaseFunctions';
 import { actionType } from '../context/reducer';
 import { useStateValue } from '../context/StateProvider';
+import {Switch} from "antd";
 
 const AddProduct = () => {
 
@@ -21,6 +22,11 @@ const AddProduct = () => {
   const [productImage, setProductImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [{produceSelection}, dispatch] = useStateValue();
+  const [toggle, setToggle] = useState(false)
+
+  const toggler = () => {
+    toggle ? setToggle(false) : setToggle(true);
+  }
     
   const uploadProductImage = (e) => {
     setIsLoading(true);
@@ -28,6 +34,9 @@ const AddProduct = () => {
     const productImage = e.target.files[0];
     const storageRef = ref(storage, `Images/${Date.now()}-${productImage.name}`)
     const uploadTask = uploadBytesResumable(storageRef, productImage);
+    
+
+    
 
     uploadTask.on('state_changed', (snapshot) => {
       const uploadProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -75,12 +84,6 @@ const AddProduct = () => {
       if((!productImage || !name || !categories|| !price || !calories || !description)) {
 
         setFields(true);
-        console.log(productImage);
-        console.log(name);
-        console.log(categories);
-        console.log(price);
-        console.log(calories);
-        console.log(description);
         setNotice("All fields must be filled!");
         setAlertStatus("danger");
         setTimeout(() => {
@@ -199,19 +202,29 @@ const AddProduct = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+            <div>
+                  {/* Category */}
+              <div className='mt-2 mb-3'>
+                  <h4>Product Category:</h4>
+                  <select onChange={(e) => setCategories(e.target.value)}>
+                    <option value='other'>Select Category</option>
 
-            <div className='mt-2 mb-3'>
-                <h4>Product Category:</h4>
-                <select onChange={(e) => setCategories(e.target.value)}>
-                  <option value='other'>Select Category</option>
+                    {category && category.map(item => (
+                      <option key={item.id} className="capitalize bg-slate-50 text-slate-900 text-lg"
+                      value={item.urlParamName}>{item.name}</option>
+                    ))}
+                  </select>
+              </div>
+              <div>
+                <h3 className={`${toggle ? 'text-green-700' : 'text-red-700'}`}>Vegan</h3>
+                <Switch onClick={toggler}/>
+                {
+                  toggle ? <div className='font-bold text-green-700'>Yes</div> : <div className='font-bold text-red-700'>No</div>
+                }
+              </div>
 
-                  {category && category.map(item => (
-                    <option key={item.id} className="capitalize bg-slate-50 text-slate-900 text-lg"
-                    value={item.urlParamName}>{item.name}</option>
-                  ))}
-                </select>
             </div>
-
+                  {/* Price */}
             <div className='flex flex-row p-2'>   
               <div className='w-2/4'>
                 <h5>
@@ -221,7 +234,7 @@ const AddProduct = () => {
 
               <div className='w-2/4'>
                 <h5>
-                  Calories: <input type='text' placeholder='458.7 / 299' className='bg-slate-50 w-3/5' required value={calories} onChange={(e) => setCalories(e.target.value)}/>
+                  Calories:<br></br> <input type='text' placeholder='458.7 / 299' className='bg-slate-50 w-3/5' required value={calories} onChange={(e) => setCalories(e.target.value)}/>
                 </h5>
               </div>
             </div>

@@ -219,8 +219,17 @@ input::placeholder {
     width: 100%;
     justify-content: space-between;
 }
+
+.empty-cart-box{
+    background-color: #FEE4E5;
+    background-image: url('./Images/empty-cart.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right center;
+    height: 60vh;
+}
   
-  .cart-total{
+.cart-total{
     display: flex;
     flex-direction: row;
     justify-content: space-between;

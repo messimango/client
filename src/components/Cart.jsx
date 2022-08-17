@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 import CartItems from './CartItems';
+import EmptyCart from '../Images/empty-cart.jpg';
 
 const Cart = () => {
     
@@ -40,12 +41,15 @@ const Cart = () => {
                 <CartItems />
     
                 ) : (
-                    <div>
-                        <h3>Empty Cart</h3>
-                        <p>Looks like you haven't added anything to your cart yet!</p>
+                    <div className=''>
 
+                        <div className='empty-cart-box mb-2 p-4'>
+                            <h3 className='font-bold text-6xl text-center mb-8'>Your Cart is Empty!</h3>
+                            <p>Looks like you haven't added<br/> anything to your cart yet!</p>
+                        </div>
 
-                        <h5>You can continue browsing or reserve a seat!</h5>
+                        <h5 className='text-center'>You can continue browsing or reserve a table!</h5>
+                        
                         <motion.button onClick={closeCheckout} type='button' whileTap={{ scale:0.7 }}
                             className='continue-button text-lg my-2 bg-white text-emerald-800 rounded-full w-full p-2 font-bold'
                             > {'< Continue Shopping'}
