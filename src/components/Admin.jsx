@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Admin = () => {
+
   return (
     <div className='text-black'>
       <Link to={'/AddProduct'}>

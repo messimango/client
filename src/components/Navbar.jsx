@@ -14,7 +14,7 @@ const Navbar = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  const [{user, checkout}, dispatch] = useStateValue()
+  const [{user, cart, checkout}, dispatch] = useStateValue()
   const [openProfile, setOpenProfile] = useState(false)
 
   const login = async () => {
@@ -74,9 +74,17 @@ const Navbar = () => {
           <motion.li  whileTap={{scale:0.7}}  onClick={() => setOpenProfile(false)} className='contact-button cursor-pointer flex flex-col hover:bg-cyan-400 p-2 rounded-full w-10 h-8'>
             <i className="fa-solid fa-phone text-center text-slate-50"></i>
           </motion.li>
-
+          
           <motion.li  whileTap={{scale:0.7}} onClick={toggleCheckout} className='cart-button cursor-pointer flex flex-col hover:bg-cyan-400 p-2 rounded-md w-20 h-8 relative'>
-            <i className="fa-solid fa-basket-shopping text-center text-slate-50"><p className='bg-rose-500 rounded-full w-4 h-4 text-center text-xs text-slate-50 absolute top-0 right-5'>4</p></i>
+            <i className="fa-solid fa-basket-shopping text-center text-slate-50">
+              {cart && cart.length > 0 && (
+                // only load if more than 1 item in cart
+                <p className='bg-rose-500 rounded-full w-4 h-4 text-center text-xs text-slate-50 absolute top-0 right-5'>
+                {cart.length}
+              </p>
+              )}
+              
+            </i>
           </motion.li>
 
 

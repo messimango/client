@@ -10,6 +10,7 @@ import { actionType } from "./context/reducer";
 
 
 function App() {
+  
 
   const [{produceSelection, checkout}, dispatch] = useStateValue();
 
@@ -23,7 +24,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData();    
   }, []);
 
   useEffect(() => {
