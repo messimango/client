@@ -1,26 +1,70 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useStateValue } from '../context/StateProvider';
 import { Link } from 'react-router-dom';
 import { actionType } from '../context/reducer';
 
 const CartItems = () => {
-    const [{user, cart, checkout}, dispatch] = useStateValue();
+   
+    const [{user, cart, checkout}, dispatch] = useStateValue();    
+    const [cartItems, setCartItems] = useState();
+
+    const updateCart = (sub) => {        
+        if(sub) {
+            localStorage.setItem('cart', JSON.stringify(sub));
+            setCartItems(sub);
+        } else {            
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            dispatch({
+                type: actionType.SET_CART,
+                cart: cartItems,
+          });
+        }
+    };
+
+    const removeItem = () => {
+        
+    }
 
     const closeCheckout = () => {
         dispatch({
             type: actionType.SET_CHECKOUT,
             checkout: !checkout,
           })
-    }
+    };
     
-    const changeQty = (action) => {
-        if(action == "minus") {
+    const changeQty = (action, id, theQty) => {
+        if(action == "minus") {            
+            if (theQty == 1) {
+                var sub = cart.filter((item) => item.id !== id)
+                dispatch({
+                    type: actionType.SET_CART,
+                    cart: sub,
+                });
+                updateCart(sub);
+            } else {
+                cart.map((item) => {
+                    if (item.id === id) {
+                        item.qty--;
+                    }
+                });
+                updateCart();
+            }
             
         } else if(action == "plus") {
-            
+            cart.map((item) => {
+                if(item.id === id) {
+                    item.qty++;
+                }
+            });
+            updateCart();
         }
-    }
+    };
+
+    useEffect(() => {
+      setCartItems(cart)
+    }, [cartItems])
+    
 
 
   return (
@@ -53,13 +97,13 @@ const CartItems = () => {
 
                             <div className='cart-item-buttons group flex flex-column items-center cursor-pointer'>
 
-                                <motion.div onClick={() => changeQty("plus", item.id)} whileTap={ {scale:0.7} }>
+                                <motion.div onClick={() => changeQty("plus", item.id, item.qty)} whileTap={ {scale:0.7} }>
                                     <i className='fa-solid fa-caret-up text-emerald-800'></i>
                                 </motion.div>
 
-                                <span>1</span>
+                                <span>{item.qty}</span>
 
-                                <motion.div onClick={() => changeQty("minus", item.id)} whileTap={ {scale:0.7} }>
+                                <motion.div onClick={() => changeQty("minus", item.id, item.qty)} whileTap={ {scale:0.7} }>
                                     <i className='fa-solid fa-caret-down text-emerald-800'></i>
                                 </motion.div>
 
