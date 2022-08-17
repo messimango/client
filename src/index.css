@@ -212,6 +212,13 @@ input::placeholder {
   .cart-body{
     height: 52%;
 }
+
+.cart-item-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
   
   .cart-total{
     display: flex;

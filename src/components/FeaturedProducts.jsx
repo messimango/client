@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 
 function FeaturedProducts() {
-
-  const [{produceSelection}, dispatch] = useStateValue();
+  const [cartItems, setCartItems] = useState([]);
+  const [{produceSelection, cart}, dispatch] = useStateValue();
   const momoSelection = produceSelection?.filter((n) => n.category === 'momo');
+  
+  const addBasket = () => {  
+    dispatch({
+        type: actionType.SET_CART,
+        cart : cartItems,
+    });
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }  
 
   const slideLeft = () => {
     var slider = document.getElementById('slider')
@@ -15,6 +24,14 @@ function FeaturedProducts() {
     var slider = document.getElementById('slider')
     slider.scrollLeft = slider.scrollLeft + 500;
   }  
+  
+  useEffect(() => {
+    setCartItems([...cart])
+  }, []);
+
+  useEffect(() => {
+    addBasket()
+  }, [cartItems]);
 
   return (
     <div>
@@ -36,7 +53,7 @@ function FeaturedProducts() {
                             <h4 className='text-slate-900 text-center'>{item.name}{item.unit > 1 ? <><p className='text-slate-900 text-xs'>({item.unit} PCS)</p></> : <></>}</h4>
 
                             <h6 className='text-slate-900'>${item.price}</h6>                      
-                            <button className='btn btn-danger btn-sm'>Add to Basket</button>
+                            <button onClick={() => setCartItems([...cartItems, item])} className='btn btn-danger btn-sm'>Add to Basket</button>
                           </div>
                         </div>
                         
