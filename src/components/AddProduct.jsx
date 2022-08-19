@@ -215,6 +215,8 @@ const AddProduct = () => {
                     ))}
                   </select>
               </div>
+
+              {/* Vegan ? */}
               <div>
                 <h3 className={`${toggle ? 'text-green-700' : 'text-red-700'}`}>Vegan</h3>
                 <Switch onClick={toggler}/>

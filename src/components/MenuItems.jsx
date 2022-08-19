@@ -49,7 +49,7 @@ const MenuItems = () => {
         {selectedCategory === 'all'? <>
           {produceSelection && produceSelection.map((item) => (
           <article key={item.id} className={`menu-item bg-slate-200 rounded-2xl p-1 m-1 justify-center align-middle`} >
-            <img className="menu-item-image rounded-2xl w-1/3" src={item.imageURL} alt={item.name}/>
+            <img className="menu-item-image rounded-2xl" src={item.imageURL} alt={item.name}/>
             <div className="menu-item-info p-2 flex flex-col">
                 <header className="menu-item-title flex flex-row justify-between">
                     <h4 className=''><b>{item.name}{item.unit > 1 ? <><p className='text-slate-900 text-xs'>({item.unit} PCS)</p></> : <></>}</b></h4>
@@ -68,7 +68,7 @@ const MenuItems = () => {
         : <>
         {menuSelection && menuSelection.map((item) => (
           <article key={item.id} className={`menu-item bg-slate-200 rounded-2xl p-1 m-1 justify-center align-middle`} >
-            <img className="menu-item-image border-4 rounded-2xl" src={item.imageURL} alt={item.name}/>
+            <img className="menu-item-image rounded-2xl" src={item.imageURL} alt={item.name}/>
             <div className="menu-item-info p-2 flex flex-col">
                 <header className="menu-item-title flex flex-row justify-between">
                     <h4 className=''><b>{item.name}{item.unit > 1 ? <><p className='text-slate-900 text-xs'>({item.unit} PCS)</p></> : <></>}</b></h4>

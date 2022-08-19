@@ -166,11 +166,14 @@ input::placeholder {
     padding-top: 15px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .menu-item {
+        display: grid;
         grid-template-columns: 225px 1fr;
         gap: 0 20px;
         max-width: 40rem;
+        justify-content: center;
+        align-items: center;
     }
     .menu-item-image {
         height: 175px;
