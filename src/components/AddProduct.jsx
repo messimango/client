@@ -13,9 +13,11 @@ const AddProduct = () => {
 
   const [name, setName] = useState("");
   const [calories, setCalories] = useState("");
+  const [vegan, setVegan] = useState(false);
+  const [vegetarian, setVegetarian] = useState(false);
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [unit, setUnit] = useState("");
+  const [unit, setUnit] = useState(1);
   const [categories, setCategories] = useState(null);
   const [fields, setFields] = useState(false);
   const [alertStatus, setAlertStatus] = useState('');
@@ -25,8 +27,11 @@ const AddProduct = () => {
   const [{produceSelection}, dispatch] = useStateValue();
   const [toggle, setToggle] = useState(false)
 
-  const toggler = () => {
-    toggle ? setToggle(false) : setToggle(true);
+  const checkVegan = () => {
+    vegan ? setVegan(false) : setVegan(true);
+  }  
+  const checkVegetarian = () => {
+    vegetarian ? setVegetarian(false) : setVegetarian(true);
   }
     
   const uploadProductImage = (e) => {
@@ -82,7 +87,7 @@ const AddProduct = () => {
   const saveInfo = () => {
     setIsLoading(true);
     try {
-      if((!productImage || !name || !categories|| !price || !calories || !description)) {
+      if((!productImage || !name || !categories|| !price || !description)) {
 
         setFields(true);
         setNotice("All fields must be filled!");
@@ -97,6 +102,9 @@ const AddProduct = () => {
           name : name,
           imageURL : productImage,
           category : categories,
+          vegan: vegan,
+          vegetarian: vegetarian,
+          unit: unit,
           price : price,
           calories : calories,
           description : description,
@@ -130,6 +138,8 @@ const AddProduct = () => {
     setName("");
     setProductImage(null);
     setCalories('');
+    setVegan(false);
+    setUnit("");
     setPrice("");
     setDescription("");
     setCategories("Select Category");
@@ -217,14 +227,26 @@ const AddProduct = () => {
                   </select>
               </div>
 
-              {/* Vegan ? */}
-              <div>
-                <h3 className={`${toggle ? 'text-green-700' : 'text-red-700'}`}>Vegan</h3>
-                <Switch onClick={toggler}/>
-                {
-                  toggle ? <div className='font-bold text-green-700'>Yes</div> : <div className='font-bold text-red-700'>No</div>
-                }
+              {/* Vegan and Veg ? */}
+              <div className='flex flex-row p-2 justify-center'>
+                <div className='mx-2'>
+                  <h3 className={`${vegan ? 'text-green-700' : 'text-red-700'}`}>Vegan</h3>
+                  <Switch onClick={checkVegan}/>
+                  {
+                    vegan ? <div className='font-bold text-green-700'>Yes</div> : <div className='font-bold text-red-700'>No</div>
+                  }
+                </div>
+
+                <div className='mx-2'>
+                  <h3 className={`${vegetarian ? 'text-green-700' : 'text-red-700'}`}>Vegetarian</h3>
+                  <Switch onClick={checkVegetarian}/>
+                  {
+                    vegetarian ? <div className='font-bold text-green-700'>Yes</div> : <div className='font-bold text-red-700'>No</div>
+                  }
+                </div>
               </div>
+
+
 
             </div>
                   
