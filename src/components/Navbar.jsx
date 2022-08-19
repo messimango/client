@@ -54,7 +54,7 @@ const Navbar = () => {
       <div className='menu-items w-full h-full flex flex-row'>
 
         {/* Company Logo */}
-        <Link to={'/'} className='company-logo flex gap-1 cursor-pointer p-2' onClick={() => setOpenProfile(false)}>
+        <Link to={'/'} className='company-logo flex gap-1 cursor-pointer px-4 py-2' onClick={() => setOpenProfile(false)}>
 
           <img src={Logo} className="company-image w-70 h-10" alt='Company Logo' />
 

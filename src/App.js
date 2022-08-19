@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { Navbar, Login, Homepage, Admin, Winter, AddProduct, Menu, Cart } from "./components";
+import { Navbar, Login, Homepage, Admin, Winter, AddProduct, EditProduct, RemoveProduct, Menu, Cart } from "./components";
 import { getAllProducts } from './utilities/firebaseFunctions';
 import { useStateValue } from "./context/StateProvider";
 import { actionType } from "./context/reducer";
@@ -43,6 +43,8 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/winter" element={<Winter />} />
             <Route path="/addproduct" element={<AddProduct />} />
+            <Route path="/removeproduct" element={<RemoveProduct />} />
+            <Route path="/editproduct" element={<EditProduct />} />
             <Route path="/menu" element={<Menu />} />
           </Routes>
         </div>

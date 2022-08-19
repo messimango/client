@@ -15,6 +15,7 @@ const AddProduct = () => {
   const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [unit, setUnit] = useState("");
   const [categories, setCategories] = useState(null);
   const [fields, setFields] = useState(false);
   const [alertStatus, setAlertStatus] = useState('');
@@ -226,14 +227,23 @@ const AddProduct = () => {
               </div>
 
             </div>
-                  {/* Price */}
-            <div className='flex flex-row p-2'>   
+                  
+            <div className='flex flex-row p-2'>
+              
+              {/* Unit */}
+              <div className='mt-2 mb-3'>
+              <h5>Unit:</h5>
+              <input name='unit' type="number" max="20" min="20" value={unit} onChange={(e) => setUnit(e.target.value)}></input>
+              </div>   
+
+              {/* Price */}
               <div className='w-2/4'>
                 <h5>
                   Price: <br></br><input type='text' placeholder='12.30 / 8.99' className='bg-slate-50 w-3/5' required value={price} onChange={(e) => setPrice(e.target.value)}/>
                 </h5>
               </div>  
-
+              
+              {/* Calories */}
               <div className='w-2/4'>
                 <h5>
                   Calories:<br></br> <input type='text' placeholder='458.7 / 299' className='bg-slate-50 w-3/5' required value={calories} onChange={(e) => setCalories(e.target.value)}/>
