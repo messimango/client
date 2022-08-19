@@ -103,6 +103,12 @@ const Navbar = () => {
                     <motion.li className='hover:bg-blue-100 py-2 px-4 shadow-xl cursor-pointer'>Admin</motion.li>
                   </Link>
                 )}
+
+                {user && (
+                  <Link to={'./Reservation'}  onClick={() => setOpenProfile(false)}>
+                    <motion.li className='hover:bg-blue-100 py-2 px-4 shadow-xl cursor-pointer'>Reservation</motion.li>
+                  </Link>
+                )}
                 
                 <motion.li  onClick={() => setOpenProfile(false)} whileTap={{scale:0.7}} className='hover:bg-blue-100 py-2 px-4 shadow-xl cursor-pointer'>Account Settings</motion.li>
                 <motion.li whileTap={{scale:0.7}} className='hover:bg-blue-100 py-2 px-4 shadow-xl cursor-pointer' onClick={logout}>Logout</motion.li>
