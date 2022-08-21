@@ -48,8 +48,27 @@ const MenuItems = () => {
       <div id="products" className='products bg-slate-50 p-4 grid justify-center w-11/12'>
         {selectedCategory === 'all'? <>
           {produceSelection && produceSelection.map((item) => (
-          <article key={item.id} className={`menu-item bg-slate-200 rounded-2xl p-1 m-1 justify-center align-middle`} >
-            <img className="menu-item-image rounded-2xl" src={item.imageURL} alt={item.name}/>
+          <article key={item.id} className={`menu-item bg-slate-50 rounded-2xl p-1 m-1 justify-center align-middle`} >
+            <div>
+              <img className="menu-item-image rounded-2xl" src={item.imageURL} alt={item.name}/>
+              <div className='flex flex-row justify-center'>
+                {
+                  item.vegan && (
+                    <div>
+                      {console.log(item.name)}{console.log(item.vegan)}
+                      <img src='https://t4.ftcdn.net/jpg/02/99/88/93/360_F_299889394_1prIwRtf6ndCfZegWOEeJRPKc56dTHFK.jpg' className="w-8" />
+                    </div>
+                  )
+                }
+                {
+                  item.vegetarian && (
+                    <div>
+                      <img src='https://media.istockphoto.com/vectors/vegetarian-food-diet-icon-organic-bio-eco-symbol-no-meat-vegetarian-vector-id1183762814?k=20&m=1183762814&s=170667a&w=0&h=mIljQbwuhiJezFLqoZeEMMeeq8peQU-YUNJHBpKNA7Q=' className="w-8" />
+                    </div>
+                  )
+                }
+              </div>
+            </div>
             <div className="menu-item-info p-2 flex flex-col">
                 <header className="menu-item-title flex flex-row justify-between">
                     <h4 className=''><b>{item.name}{item.unit > 1 ? <><p className='text-slate-900 text-xs'>({item.unit} PCS)</p></> : <></>}</b></h4>
@@ -67,8 +86,27 @@ const MenuItems = () => {
         </> 
         : <>
         {menuSelection && menuSelection.map((item) => (
-          <article key={item.id} className={`menu-item bg-slate-200 rounded-2xl p-1 m-1 justify-center align-middle`} >
-            <img className="menu-item-image rounded-2xl" src={item.imageURL} alt={item.name}/>
+          <article key={item.id} className={`menu-item bg-slate-50 rounded-2xl p-1 m-1 justify-center align-middle`} >
+            <div>
+              <img className="menu-item-image rounded-2xl" src={item.imageURL} alt={item.name}/>
+              <div className='flex flex-row justify-center'>
+                {
+                  item.vegan && (
+                    <div>
+                      {console.log(item.name)}{console.log(item.vegan)}
+                      <img src='https://t4.ftcdn.net/jpg/02/99/88/93/360_F_299889394_1prIwRtf6ndCfZegWOEeJRPKc56dTHFK.jpg' className="w-8" />
+                    </div>
+                  )
+                }
+                {
+                  item.vegetarian && (
+                    <div>
+                      <img src='https://media.istockphoto.com/vectors/vegetarian-food-diet-icon-organic-bio-eco-symbol-no-meat-vegetarian-vector-id1183762814?k=20&m=1183762814&s=170667a&w=0&h=mIljQbwuhiJezFLqoZeEMMeeq8peQU-YUNJHBpKNA7Q=' className="w-8" />
+                    </div>
+                  )
+                }
+              </div>
+            </div>
             <div className="menu-item-info p-2 flex flex-col">
                 <header className="menu-item-title flex flex-row justify-between">
                     <h4 className=''><b>{item.name}{item.unit > 1 ? <><p className='text-slate-900 text-xs'>({item.unit} PCS)</p></> : <></>}</b></h4>

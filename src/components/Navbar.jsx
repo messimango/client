@@ -105,7 +105,7 @@ const Navbar = () => {
                 )}
 
                 {user && (
-                  <Link to={'./Reservation'}  onClick={() => setOpenProfile(false)}>
+                  <Link to={'./Reservations'}  onClick={() => setOpenProfile(false)}>
                     <motion.li className='hover:bg-blue-100 py-2 px-4 shadow-xl cursor-pointer'>Reservation</motion.li>
                   </Link>
                 )}

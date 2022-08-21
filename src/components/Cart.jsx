@@ -4,6 +4,7 @@ import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 import CartItems from './CartItems';
 import EmptyCart from '../Images/empty-cart.jpg';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     
@@ -55,10 +56,13 @@ const Cart = () => {
                             > {'< Continue Shopping'}
                         </motion.button>
 
-                        <motion.button onClick={closeCheckout} type='button' whileTap={{ scale:0.7 }}
-                            className='continue-button text-lg my-2 bg-white text-emerald-800 rounded-full w-full p-2 font-bold'
-                            > {'Reserve a Table'}
-                        </motion.button>
+                        <Link to={'./Reservation'}>
+                            <motion.button onClick={closeCheckout} type='button' whileTap={{ scale:0.7 }}
+                                className='continue-button text-lg my-2 bg-white text-emerald-800 rounded-full w-full p-2 font-bold'
+                                > {'Reserve a Table'}
+                            </motion.button>
+                        </Link>
+
                     </div>
                 )
             }

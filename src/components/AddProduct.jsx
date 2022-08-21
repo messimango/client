@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { category } from '../utilities/data';
 import Loading from './Loading';
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage' ;
@@ -8,6 +7,7 @@ import { getAllProducts, saveProduct } from '../utilities/firebaseFunctions';
 import { actionType } from '../context/reducer';
 import { useStateValue } from '../context/StateProvider';
 import {Switch} from "antd";
+import ReturnButton from './ReturnButton';
 
 const AddProduct = () => {
 
@@ -25,7 +25,9 @@ const AddProduct = () => {
   const [productImage, setProductImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [{produceSelection}, dispatch] = useStateValue();
-  const [toggle, setToggle] = useState(false)
+
+
+  console.log(vegan)
 
   const checkVegan = () => {
     vegan ? setVegan(false) : setVegan(true);
@@ -138,7 +140,12 @@ const AddProduct = () => {
     setName("");
     setProductImage(null);
     setCalories('');
-    setVegan(false);
+    if(vegan) {
+      setVegan(false)
+    }
+    if(vegetarian) {      
+    setVegetarian(false);
+    }
     setUnit("");
     setPrice("");
     setDescription("");
@@ -157,9 +164,7 @@ const AddProduct = () => {
     
   return (
     <div className='p-2'>
-      <Link to={'/Admin'}>
-        <button className='text-yellow-500 border-2 p-1 mb-8 rounded-lg  bg-slate-100 text-lg font-extrabold'><i className="fa-solid fa-left-long"></i> Admin</button>
-      </Link>
+      <ReturnButton name="Back To Admin" link=""/>
       
       <div className='border-2 rounded-lg p-4 text-center bg-slate-200'>
         <h1 className='text-center mt-8 '>Add Product</h1>
