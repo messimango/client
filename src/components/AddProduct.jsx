@@ -161,7 +161,7 @@ const AddProduct = () => {
     
   return (
     <div className='p-2'>
-      <ReturnButton name="Back To Admin" link=""/>
+      <ReturnButton name="Back To Admin" link="../Admin"/>
       
       <div className='border-2 rounded-lg p-4 text-center bg-slate-200'>
         <h1 className='text-center mt-8 '>Add Product</h1>

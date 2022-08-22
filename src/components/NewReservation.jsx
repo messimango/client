@@ -16,10 +16,11 @@ const NewReservation = () => {
     const [email, setEmail] = useState(user.email);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [peopleTotal, setPeopleTotal] = useState("");
-    const [accepted, setAccepted] = useState(false)
+    const [accepted, setAccepted] = useState("pending")
     const [reservationDate, setReservationDate] = useState("DD MM YYY");
     const [reservationTime, setReservationTime] = useState("10:00");
     const [comments, setComments] = useState("");
+    const [adminComment, setAdminComment] = useState("");
 
 
     // check if valid email
@@ -101,6 +102,7 @@ const NewReservation = () => {
                     reservationDate: reservationDate,
                     reservationTime: reservationTime,
                     comments : comments,
+                    adminComment : adminComment,
                     accepted : accepted,
                 }
                 saveReservation(reservationData);
@@ -126,12 +128,7 @@ const NewReservation = () => {
                 setLoading(false);
             }, 5000);
         }
-
         fetchData();
-        // make sure data has accepted values as false AND USER ID
-        // add to new data collection called reservation
-        
-
     }
 
     const clearData = () => {
@@ -157,7 +154,7 @@ const NewReservation = () => {
 
   return (
     <main className='bg-slate-50 w-full h-full'>        
-        <ReturnButton name='Back to Reservations' link="Reservations"/>
+        <ReturnButton name='Back to Reservations' link="../Reservations"/>
         <h1 className='text-center font-bold text-5xl'>Make A New Reservation!</h1>       
         
         <section className='border-slate-900'>

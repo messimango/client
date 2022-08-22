@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ReturnButton = (name, link) => {
+const ReturnButton = (name) => {
   return (
     <div>
         <Link to={`./${name.link}`}>
