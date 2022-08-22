@@ -5,7 +5,8 @@ const cartInfo = fetchCart();
 
 export const initialState = { 
     user: userInfo,
-    produceSelection: null,    
+    produceSelection: null,
+    reservationList: null,     
     checkout: false,
     cart : cartInfo
 };

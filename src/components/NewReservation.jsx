@@ -155,7 +155,9 @@ const NewReservation = () => {
   return (
     <main className='bg-slate-50 w-full h-full'>        
         <ReturnButton name='Back to Reservations' link="../Reservations"/>
-        <h1 className='text-center font-bold text-5xl'>Make A New Reservation!</h1>       
+        <h1 className='text-center font-bold text-5xl'> 
+            Make A New Reservation! <div className='underline w-1/5'></div>
+        </h1>       
         
         <section className='border-slate-900'>
 

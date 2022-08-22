@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Navbar, Login, Homepage, Admin, Winter, AddProduct, EditProduct, RemoveProduct, Menu, Cart, Reservations, NewReservation, MyReservations } from "./components";
-import { getAllProducts } from './utilities/firebaseFunctions';
+import { getAllProducts, getAllReservations } from './utilities/firebaseFunctions';
 import { useStateValue } from "./context/StateProvider";
 import { actionType } from "./context/reducer";
 
@@ -12,13 +12,19 @@ import { actionType } from "./context/reducer";
 function App() {
   
 
-  const [{produceSelection, checkout}, dispatch] = useStateValue();
+  const [{produceSelection, checkout, reservationsList}, dispatch] = useStateValue();
 
   const fetchData = async () => {
     await getAllProducts().then(data => {
       dispatch({
         type: actionType.SET_PRODUCE_SELECTION,
         produceSelection : data,
+      });
+    });
+    await getAllReservations().then(data => {
+      dispatch({
+        type: actionType.SET_RESERVATION_LIST,
+        reservationList : data,
       });
     });
   };
