@@ -26,9 +26,6 @@ const AddProduct = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [{produceSelection}, dispatch] = useStateValue();
 
-
-  console.log(vegan)
-
   const checkVegan = () => {
     vegan ? setVegan(false) : setVegan(true);
   }  
@@ -291,7 +288,8 @@ const AddProduct = () => {
         </div> 
 
         <div>
-          <button onClick={saveInfo} type='button' className='bg-green-600 p-2 rounded-xl text-slate-100 font-bold'><i className="fa-solid fa-circle-plus"></i> Add Product</button>
+          <button onClick={saveInfo} type='button' className='bg-green-600 p-2 rounded-xl text-slate-100 font-bold'>
+            <i className="fa-solid fa-circle-plus"></i> Add Product</button>
         </div>
 
       </div>

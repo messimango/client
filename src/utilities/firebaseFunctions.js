@@ -14,3 +14,17 @@ export const getAllProducts = async () => {
 
     return items.docs.map((doc) => doc.data());
 };
+
+// saving new reservation
+export const saveReservation = async (data) => {
+    await setDoc(doc(firestore, 'reservationList', `${Date.now()}`), data, { merge: true, });
+};
+
+// load all reservations
+export const getAllReservations = async () => {
+    const reservationsList = await getDocs(
+        query(collection(firestore, 'reservationList'), orderBy("id", "desc"))
+    );
+
+    return reservationsList.docs.map((doc) => doc.data());
+};
