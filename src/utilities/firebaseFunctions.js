@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, orderBy, query, setDoc } from "firebase/firestore"
+import { collection, doc, getDocs, orderBy, query, setDoc, updateDoc } from "firebase/firestore"
 import { firestore } from "../firebase.config"
 
 // saving new products
@@ -9,7 +9,7 @@ export const saveProduct = async (data) => {
 // loadall products
 export const getAllProducts = async () => {
     const items = await getDocs(
-        query(collection(firestore, 'produceSelection'), orderBy("id", "desc"))
+        query(collection(firestore, 'produceSelection'), orderBy("category", "desc"))
     );
 
     return items.docs.map((doc) => doc.data());
@@ -18,6 +18,12 @@ export const getAllProducts = async () => {
 // saving new reservation
 export const saveReservation = async (data) => {
     await setDoc(doc(firestore, 'reservationList', `${Date.now()}`), data, { merge: true, });
+};
+
+// updating a reservation
+export const updateReservation = async (id, status, adminMessage) => {    
+    const newFields = {accepted: status, adminComment: adminMessage}
+    await updateDoc(doc(firestore, 'reservationList', id), newFields)
 };
 
 // load all reservations

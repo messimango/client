@@ -145,8 +145,8 @@ const NewReservation = () => {
     const fetchData = async () => {
         await getAllReservations().then(data => {
             dispatch({
-              type: actionType.SET_RESERVATIONS,
-              reservationList : reservationDate,
+              type: actionType.SET_RESERVATION_LIST,
+              reservationList : data,
             });
           });
     }

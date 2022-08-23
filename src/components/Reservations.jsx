@@ -15,6 +15,10 @@ const Reservation = () => {
           <Link to={'/MyReservations'}>
             <button className='btn btn-small btn-warning cursor-pointer mx-2'><i className="fa-solid fa-pen-to-square text-gray-500"></i> My Reservations</button>
           </Link>
+          
+          <Link to={'/ReviewReservations'}>
+            <button className='btn btn-small btn-warning cursor-pointer mx-2'><i className="fa-solid fa-pen-to-square text-gray-500"></i> Review Reservations</button>
+          </Link>
 
         </section>
       </div>

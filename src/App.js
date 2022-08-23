@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { Navbar, Login, Homepage, Admin, Winter, AddProduct, EditProduct, RemoveProduct, Menu, Cart, Reservations, NewReservation, MyReservations } from "./components";
+import { Navbar, Login, Homepage, Admin, Winter, AddProduct, EditProduct, RemoveProduct,
+   Menu, Cart, Reservations, NewReservation, MyReservations, ReviewReservations } from "./components";
 import { getAllProducts, getAllReservations } from './utilities/firebaseFunctions';
 import { useStateValue } from "./context/StateProvider";
 import { actionType } from "./context/reducer";
@@ -55,6 +56,7 @@ function App() {
             <Route path="/reservations" element={<Reservations />} />
             <Route path="/newreservation" element={<NewReservation />} />
             <Route path="/myreservations" element={<MyReservations />} />
+            <Route path="/reviewreservations" element={<ReviewReservations />} />            
           </Routes>
         </div>
         
