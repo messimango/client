@@ -23,6 +23,16 @@ const MenuItems = () => {
   useEffect(() => {
   }, [selectedCategory]);
 
+  const updateCart = (item) => {
+    let checkCart = localStorage.getItem('cart');
+    
+    if (1 === 2) {
+    } else {      
+      setCartItems([...cartItems, item])
+    }
+  }
+
+
   useEffect(() => {
     setCartItems([...cart])
   }, []);
@@ -77,7 +87,7 @@ const MenuItems = () => {
                 <p className="menu-item-description overflow-auto">
                     {item.description}
                 </p>
-                <div onClick={() => setCartItems([...cartItems, item])} className=" text-center cursor-pointer p-1 border-red-600 border-2 rounded-2xl">
+                <div  onClick={() => setCartItems([...cartItems, item])} className=" text-center cursor-pointer p-1 border-red-600 border-2 rounded-2xl">
                   Add To<i className=" mx-1 fa fa-shopping-basket text-lg text-red-600"></i>
                 </div>                  
             </div>
@@ -115,7 +125,7 @@ const MenuItems = () => {
                 <p className="menu-item-description overflow-auto">
                     {item.description}
                 </p>
-                <div onClick={() => setCartItems([...cartItems, item])} className=" text-center cursor-pointer p-1 border-red-600 border-2 rounded-2xl">
+                <div onClick={() => updateCart(item)} className=" text-center cursor-pointer p-1 border-red-600 border-2 rounded-2xl">
                   Add To<i className="mx-1 fa fa-shopping-basket text-lg text-red-600"></i>
                 </div>                 
             </div>
